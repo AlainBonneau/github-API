@@ -1,0 +1,7 @@
+.CardResults {
+    transition: transform 0.3s ease; // Pour une transition douce de 0.3 seconde
+  
+    &:hover {
+      transform: scale(1.05); // Agrandit la card de 5% au survol
+    }
+  }

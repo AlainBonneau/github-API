@@ -1,0 +1,30 @@
+:root {
+
+    --color-logo: #BDC3C7;
+
+}
+
+#root {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.github-logo-container {
+    background-color: var(--color-logo);
+    display: flex;
+    justify-content: center;   
+}
+
+.github-logo {
+    width: 300px;
+}
+
+.repos-list {
+    padding: 50px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
