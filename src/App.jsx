@@ -8,6 +8,8 @@ import CardResults from "./components/CardResults/CardResults";
 import Loader from "./components/Loading/Loading";
 
 const App = () => {
+  console.log("Application launched");
+
   const [searchQuery, setSearchQuery] = useState("");
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false);
