@@ -4,7 +4,9 @@ import App from "./App";
 import "semantic-ui-css/semantic.min.css";
 import "./App.scss";
 
-const root = ReactDOM.createRoot(document.getElementById("root")); // Utilisation de createRoot
+const rootElement = document.getElementById("root");
+const root = ReactDOM.createRoot(rootElement);
+
 root.render(
   <React.StrictMode>
     <App />
