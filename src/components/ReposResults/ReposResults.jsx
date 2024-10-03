@@ -1,7 +1,7 @@
 import React from "react";
 import "./ReposResults.scss";
 
-const ReposResults = ({ searchQuery, repositories }) => {
+const ReposResults = ({ searchQuery, repositories, count }) => {
   return (
     <div className="ReposResults">
       <div className="ui segments">
@@ -14,7 +14,9 @@ const ReposResults = ({ searchQuery, repositories }) => {
         </div>
         <div className="ui secondary segment">
           {repositories.length ? (
-            <p>Votre recherche à donnée : {repositories.length} résultats</p>
+            <p>
+              Votre recherche à donnée : {count} résultats
+            </p>
           ) : (
             <p>Votre recherche à donnée : 0 résultat</p>
           )}

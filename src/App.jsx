@@ -13,6 +13,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState(0);
   const [error, setError] = useState(null);
 
   const handleSearch = (query) => {
@@ -29,6 +30,7 @@ const App = () => {
         const response = await axios.get(
           `https://api.github.com/search/repositories?q=${searchQuery}`
         );
+        setCount(response.data.total_count);
         setRepositories(response.data.items);
       } catch (error) {
         setError(error);
@@ -46,7 +48,11 @@ const App = () => {
         <img className="github-logo" src={githubLogo} alt="Le logo de github" />
       </div>
       <SearchBar onSearch={handleSearch} />
-      <ReposResults searchQuery={searchQuery} repositories={repositories} />
+      <ReposResults
+        searchQuery={searchQuery}
+        repositories={repositories}
+        count={count}
+      />
       {loading && <Loader />}
       <div className="repos-list">
         {repositories.map((repo) => (
