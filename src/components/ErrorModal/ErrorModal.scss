@@ -1,0 +1,7 @@
+.ErrorModal {
+  z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

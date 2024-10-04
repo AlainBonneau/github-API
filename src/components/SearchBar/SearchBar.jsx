@@ -1,15 +1,30 @@
 import React, { useState } from "react";
 import "./SearchBar.scss";
+import ErrorModal from "../ErrorModal/ErrorModal";
 
 const SearchBar = ({ onSearch }) => {
   const [inputValue, setInputValue] = useState("");
+  const [isModalOpen, setisModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setisModalOpen(false);
+  };
+
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSearch = () => {
+    if (inputValue.trim() === "") {
+      setisModalOpen(true);
+      return;
+    }
+    onSearch(inputValue);
+  };
+
+  const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      onSearch(inputValue);
+      handleSearch();
     }
   };
 
@@ -20,13 +35,15 @@ const SearchBar = ({ onSearch }) => {
           type="text"
           value={inputValue}
           onChange={handleChange}
-          onKeyDown={handleSubmit}
+          onKeyDown={handleKeyDown}
           placeholder="Rechercher sur github..."
         />
-        <div onClick={() => onSearch(inputValue)} className="ui button">
+        <div onClick={handleSearch} className="ui button">
           Rechercher
         </div>
       </div>
+      {/* Modal d'erreur */}
+      {isModalOpen && <ErrorModal closeModal={closeModal} />}
     </div>
   );
 };
