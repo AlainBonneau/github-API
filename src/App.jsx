@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import axios from "axios";
-import githubLogo from "./img/githublogo.png";
+import Header from "./components/Header/Header";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ReposResults from "./components/ReposResults/ReposResults";
 import CardResults from "./components/CardResults/CardResults";
 import Loader from "./components/Loading/Loading";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   console.log("Application launched");
@@ -15,9 +16,14 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
   const [error, setError] = useState(null);
+  const [maxResults, setMaxResults] = useState(30);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+  };
+
+  const handleMaxResults = (maxResults) => {
+    setMaxResults(maxResults);
   };
 
   useEffect(() => {
@@ -44,9 +50,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div className="github-logo-container">
-        <img className="github-logo" src={githubLogo} alt="Le logo de github" />
-      </div>
+      <Header />
       <SearchBar onSearch={handleSearch} />
       <ReposResults
         searchQuery={searchQuery}
@@ -59,6 +63,12 @@ const App = () => {
           <CardResults key={repo.id} repo={repo} />
         ))}
       </div>
+      {count > maxResults && (
+        <div className="load-more-btn">
+          <button className="ui button">Load more</button>
+        </div>
+      )}
+      <Footer />
     </div>
   );
 };
