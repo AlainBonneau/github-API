@@ -7,6 +7,20 @@
   margin: 0 auto;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.repos-list {
+  flex-grow: 1;
+}
+
+.footer {
+  margin-top: auto;
+}
+
 .repos-list {
   padding: 50px 0;
   display: flex;
@@ -18,7 +32,7 @@
 }
 
 .load-more-btn {
-  margin-top: 50px;
+  margin: 50px 0;
   display: flex;
   justify-content: center;
 }
