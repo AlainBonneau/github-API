@@ -1,11 +1,12 @@
 import React from "react";
+import "./Footer.scss";
 
-function Footer() {
+function FooterComponent() {
   return (
     <footer className="footer-container">
-      <p>© 2021</p>
+      <p>© 2025</p>
     </footer>
   );
 }
 
-export default Footer;
+export default FooterComponent;

@@ -1,23 +1,4 @@
 .footer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    background-color: #f8f9fa;
-    border-top: 1px solid #e9ecef;
-    font-size: 14px;
-    color: #495057;
-    text-align: center;
-    margin-top: 20px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    z-index: 10;
-    a {
-        color: #495057;
-        text-decoration: none;
-        &:hover {
-        text-decoration: underline;
-        }
-    }
+  width: 100%;
+  background-color: #bdc3c7;
 }

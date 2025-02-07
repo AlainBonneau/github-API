@@ -6,24 +6,25 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import ReposResults from "./components/ReposResults/ReposResults";
 import CardResults from "./components/CardResults/CardResults";
 import Loader from "./components/Loading/Loading";
-import Footer from "./components/Footer/Footer";
+import FooterComponent from "./components/Footer/Footer";
 
 const App = () => {
-  console.log("Application launched");
-
   const [searchQuery, setSearchQuery] = useState("");
   const [repositories, setRepositories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
   const [error, setError] = useState(null);
   const [maxResults, setMaxResults] = useState(30);
+  const [page, setPage] = useState(1);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+    setRepositories([]);
+    setPage(1);
   };
 
-  const handleMaxResults = (maxResults) => {
-    setMaxResults(maxResults);
+  const handleMoreResults = () => {
+    setPage((prevPage) => prevPage + 1);
   };
 
   useEffect(() => {
@@ -33,25 +34,32 @@ const App = () => {
       try {
         setLoading(true);
         setError(null);
+
         const response = await axios.get(
-          `https://api.github.com/search/repositories?q=${searchQuery}`
+          `https://api.github.com/search/repositories?q=${searchQuery}&per_page=${maxResults}&page=${page}`
         );
+
         setCount(response.data.total_count);
-        setRepositories(response.data.items);
+        setRepositories((prevRepos) => [...prevRepos, ...response.data.items]);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
-  }, [searchQuery]);
+    const delayDebounce = setTimeout(() => {
+      fetchData();
+    }, 500);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchQuery, page]);
 
   return (
     <div className="app-container">
       <Header />
       <SearchBar onSearch={handleSearch} />
+      {error && <div className="error-message">Erreur : {error}</div>}
       <ReposResults
         searchQuery={searchQuery}
         repositories={repositories}
@@ -63,12 +71,14 @@ const App = () => {
           <CardResults key={repo.id} repo={repo} />
         ))}
       </div>
-      {count > maxResults && (
+      {count > repositories.length && !loading && (
         <div className="load-more-btn">
-          <button className="ui button">Load more</button>
+          <button onClick={handleMoreResults} className="ui button">
+            Load more
+          </button>
         </div>
       )}
-      <Footer />
+      <FooterComponent />
     </div>
   );
 };
