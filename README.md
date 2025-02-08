@@ -23,17 +23,3 @@ Github-API est une application web développée en **React** qui permet de reche
 ## API
 
 Le projet utilise l'[API GitHub de recherche de dépôts](https://docs.github.com/en/rest/reference/search#search-repositories) pour récupérer les informations des dépôts en fonction de la requête de l'utilisateur. Même si l'API renvoie seulement 30 résultats par requête, le nombre total de dépôts correspondants est affiché dans l'interface.
-
-## Installation et Utilisation
-
-### Prérequis
-
-- Node.js (version 12 ou supérieure)
-- pnpm (ou npm/yarn si vous préférez)
-
-### Installation
-
-1. Clonez le dépôt :
-
-   ```bash
-   git clone https://github.com/AlainBonneau/github-API.git
