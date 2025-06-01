@@ -4,7 +4,7 @@ import "./Footer.scss";
 function FooterComponent() {
   return (
     <footer className="footer-container">
-      <p>© 2025</p>
+      <p>© 2024-2025</p>
     </footer>
   );
 }
