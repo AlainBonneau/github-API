@@ -1,16 +1,25 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
+import Header from "./components/Header/Header";
+import FooterComponent from "./components/Footer/Footer";
 import NotFound from "./views/NotFound/NotFound";
+import "./main.scss";
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="page-wrapper">
+      <BrowserRouter>
+        <Header />
+        <main className="page-content">
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <FooterComponent />
+      </BrowserRouter>
+    </div>
   );
 }
 
