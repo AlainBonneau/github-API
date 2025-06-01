@@ -1,5 +1,6 @@
 import React from "react";
 import githubLogo from "../../img/githublogo.png";
+import Pagination from "../Pagination/Pagination";
 import "./Header.scss";
 
 function Header() {
@@ -10,6 +11,7 @@ function Header() {
         src={githubLogo}
         alt="Logo de notre API Github"
       />
+      <Pagination />
     </header>
   );
 }

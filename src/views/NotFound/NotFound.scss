@@ -6,7 +6,7 @@
   h1 {
     font-size: 6rem;
     margin-bottom: 1rem;
-    color: #d32f2f;
+    color: #000;
   }
 
   p {
@@ -16,14 +16,10 @@
 
   .back-home {
     padding: 0.8rem 1.5rem;
-    background-color: #d32f2f;
-    color: white;
+    background-color: #bdc3c7;
+    color: #000;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
-
-    &:hover {
-      background-color: #b71c1c;
-    }
   }
 }

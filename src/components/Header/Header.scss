@@ -1,6 +1,7 @@
 .github-logo-container {
   background-color: var(--color-logo);
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 

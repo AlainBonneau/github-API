@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ReposResults from "./components/ReposResults/ReposResults";
+import Pagination from "./components/Pagination/Pagination";
 import CardResults from "./components/CardResults/CardResults";
 import Loader from "./components/Loading/Loading";
 import "./App.scss";
