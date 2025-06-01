@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./App.scss";
 import axios from "axios";
 import Header from "./components/Header/Header";
 import SearchBar from "./components/SearchBar/SearchBar";
@@ -7,6 +6,7 @@ import ReposResults from "./components/ReposResults/ReposResults";
 import CardResults from "./components/CardResults/CardResults";
 import Loader from "./components/Loading/Loading";
 import FooterComponent from "./components/Footer/Footer";
+import "./App.scss";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
